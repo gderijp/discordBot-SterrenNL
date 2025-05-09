@@ -1,0 +1,3 @@
+# SterrenNL Discord Bot!
+
+more to come...
