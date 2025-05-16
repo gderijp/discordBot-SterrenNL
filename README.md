@@ -13,11 +13,14 @@ Once added to a voice channel you've joined, SterrenNL-Bot will stream the radio
 ## Usage
 1. Invite the bot to your server:
     ```
-    https://discord.com/oauth2/authorize?client_id=1370424211725615134&permissions=3145728&integration_type=0&scope=bot
+    https://discord.com/oauth2/authorize?client_id=1370424211725615134&permissions=8&integration_type=0&scope=bot+applications.commands
     ```
-2. Start the bot in CLI:
+2. Install node:
     ```
-    php bot.php
+    npm init
+    ```
+    ```
+    node index.js
     ```
 
 ## Notes
