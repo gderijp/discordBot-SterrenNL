@@ -1,0 +1,23 @@
+{
+  "name": "sterrennl_bot",
+  "version": "1.0.0",
+  "description": "## Introduction SterrenNL Discord Bot is a perfect bot for your dutch weekend parties! Once added to a voice channel you've joined, SterrenNL-Bot will stream the radio station SterrenNL live!",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gderijp/discordBot-SterrenNL.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/gderijp/discordBot-SterrenNL/issues"
+  },
+  "homepage": "https://github.com/gderijp/discordBot-SterrenNL#readme",
+  "dependencies": {
+    "discord.js": "^14.19.3",
+    "dotenv": "^16.5.0"
+  }
+}
