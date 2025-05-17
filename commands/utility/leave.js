@@ -1,6 +1,9 @@
 const { SlashCommandBuilder } = require("discord.js");
 const { VoiceConnectionStatus } = require('@discordjs/voice');
 const { joinVoiceChannel, AudioPlayer } = require('@discordjs/voice');
+const { createAudioPlayer } = require('@discordjs/voice');
+
+const player = createAudioPlayer();
 
 module.exports = {
     data: new SlashCommandBuilder()
@@ -9,7 +12,14 @@ module.exports = {
     async execute(interaction) {
         if (!interaction.member.voice.channel) {
             await interaction.reply('Moet je wel in een channel zitten mongool');
+            return;
         } else {
+            player.stop();
+            player.on('error', error => {
+                console.error(`Error: ${error.message}`);
+                player.play(getNextResource());
+            });
+
             await interaction.reply('Ik ga al...');
             const channel = interaction.member.voice.channel;
 
@@ -21,9 +31,7 @@ module.exports = {
 
             connection.destroy();
 
-            connection.on(VoiceConnectionStatus.Disconnected, (oldState, newState) => {
-                console.log('Doeidoei!');
-            });
+            console.log('Bot zegt doeidoei!');
         }
     },
 };
