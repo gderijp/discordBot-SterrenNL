@@ -1,6 +1,6 @@
 const { SlashCommandBuilder } = require("discord.js");
 const { VoiceConnectionStatus } = require('@discordjs/voice');
-const { joinVoiceChannel, AudioPlayer } = require('@discordjs/voice');
+const { joinVoiceChannel } = require('@discordjs/voice');
 const { createAudioPlayer, createAudioResource } = require('@discordjs/voice');
 
 const player = createAudioPlayer();
@@ -35,16 +35,6 @@ module.exports = {
             });
 
             connection.subscribe(player);
-
-
-            // // Subscribe the connection to the audio player (will play audio on the voice connection)
-            // const subscription = connection.subscribe(audioPlayer);
-
-            // // subscription could be undefined if the connection is destroyed!
-            // if (subscription) {
-            //     // Unsubscribe after 5 seconds (stop playing audio on the voice connection)
-            //     setTimeout(() => subscription.unsubscribe(), 5_000);
-            // }
         }
     },
 };

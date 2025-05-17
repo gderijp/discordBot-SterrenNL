@@ -1,11 +1,12 @@
 const { REST, Routes } = require('discord.js');
 require('dotenv').config();
 const clientId = process.env.CLIENT_ID;
-const guildId = process.env.GUILD_ID;
 const token = process.env.TOKEN;
 const fs = require('node:fs');
 const path = require('node:path');
 
+
+// run this code (top right) to insert new commands in bot
 const commands = [];
 // Grab all the command folders from the commands directory you created earlier
 const foldersPath = path.join(__dirname, 'commands');
@@ -48,4 +49,7 @@ const rest = new REST().setToken(token);
     }
 })();
 
-// run this code (top right) to insert new commands in your bot
+setTimeout(() => {
+    console.log('Script lijkt niet automatisch te stoppen...');
+    process.exit(0); // Forceer afsluiting
+}, 5000);
