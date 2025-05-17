@@ -47,3 +47,5 @@ const rest = new REST().setToken(token);
         console.error(error);
     }
 })();
+
+// run this code (top right) to insert new commands in your bot
