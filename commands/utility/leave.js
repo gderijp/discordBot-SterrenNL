@@ -1,5 +1,5 @@
 const { SlashCommandBuilder } = require("discord.js");
-const { joinVoiceChannel } = require('@discordjs/voice');
+const { getVoiceConnection } = require('@discordjs/voice');
 const { createAudioPlayer } = require('@discordjs/voice');
 
 const player = createAudioPlayer();
@@ -13,6 +13,13 @@ module.exports = {
             await interaction.reply('Moet je wel in een channel zitten mongool');
             return;
         } else {
+            const connection = getVoiceConnection(interaction.guild.id);
+
+            if (!connection) {
+                await interaction.reply('Ik zit niet eens in een call papzak');
+                return;
+            }
+
             player.stop();
             player.on('error', error => {
                 console.error(`Error: ${error.message}`);
@@ -20,17 +27,10 @@ module.exports = {
             });
 
             await interaction.reply('Ik ga al...');
-            const channel = interaction.member.voice.channel;
-
-            const connection = joinVoiceChannel({
-                channelId: channel.id,
-                guildId: channel.guild.id,
-                adapterCreator: channel.guild.voiceAdapterCreator,
-            });
 
             connection.destroy();
 
-            console.log('Bot zegt doeidoei!');
+            console.log('Daag bot!');
         }
     },
 };
