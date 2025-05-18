@@ -21,10 +21,7 @@ This bot has multiple features commands:
 
 ## Usage
 ### Out of the box:
-1. Invite the bot to your server:
-    ```
-    https://discord.com/oauth2/authorize?client_id=1370424211725615134&permissions=8&integration_type=0&scope=bot+applications.commands
-    ```
+1. [Invite the bot to your server](https://discord.com/oauth2/authorize?client_id=1370424211725615134&permissions=8&integration_type=0&scope=bot+applications.commands)
 
 ### Create your own bot:
 1. Create a new bot [here](discord.com/developers/applications).
