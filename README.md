@@ -22,6 +22,7 @@ This bot has multiple features commands:
 ## Usage
 ### Out of the box:
 1. [Invite the bot to your server](https://discord.com/oauth2/authorize?client_id=1370424211725615134&permissions=8&integration_type=0&scope=bot+applications.commands)
+(Currently not 24/7 live, might be added later)
 
 ### Create your own bot:
 1. Create a new bot [here](discord.com/developers/applications).
@@ -42,10 +43,11 @@ This bot has multiple features commands:
     ```
 
 ### Note
-If you want to edit or add a command to your bot (while it's not running), run `deploy-commands.js` so the commands get updated:
+- If you want to edit or add a command to your bot (while it's not running), run `deploy-commands.js` so the commands get updated in discord:
 ```
 node deploy-commands.js
 ```
+- If you wish to change the radio station, I advise you to visit [this site](https://www.webradiostreams.nl/) or other sites with a mp3-link to listen to the radio live. After finding your favorite station, head to `play.js` and change the `resource = createAudioResource('https://icecast.omroep.nl/radio2-sterrennl-mp3');` to your preferred station.
 
 ## Notes
 Contributions are welcome! If you find any bugs, feel free to let me know (or pretend they don't exist :p).
