@@ -9,6 +9,7 @@ This bot has multiple features commands:
 1. `/play`: If the user is connected to a voice channel, run this command and the bot will join your party and instantly stream the radio live!
 2. `/leave`: Make the bot stop playing, and disconnect completely from the call
 3. `/reload`: If you as a developer have made changes in the code (e.g. editing command functionality) while having the bot running, run this command with the command string as argument to update a command without having to stop the music
+4. `/info`: Display information about the current song playing, including artist name.
 
 ## Requirements
 - Make sure you've got Node.js installed
