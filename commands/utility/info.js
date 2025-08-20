@@ -34,7 +34,7 @@ module.exports = {
                     const imageUrl = `http://live.dabmonitor.nl:8692/data/8001/8212/${rebuiltUrl}`;
 
                     await interaction.editReply({
-                        content: `Nu op ${client.user.username}: **${artist}** - *${title}*`,
+                        content: `Nu op SterrenNL: **${artist}** - *${title}*`,
                         files: [imageUrl]
                     });
 
