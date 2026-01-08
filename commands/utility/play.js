@@ -14,13 +14,13 @@ let interval = null;
 
 module.exports = {
     data: new SlashCommandBuilder()
-    .setName('play')
-    .setDescription('Joins your voice channel for a little party!'),
+        .setName('play')
+        .setDescription('Joins your voice channel for a little party!'),
     async execute(interaction) {
         let startMessage = null;
         let inactivityCount = 0;
         let isDestroyed = false;
-        
+
         // reset vars if bot is restarted
         if (interval) {
             clearInterval(interval);
@@ -28,7 +28,7 @@ module.exports = {
         }
         infoMessage = null;
         prevTitle = '';
-        
+
         // throw error if user is not in voice channel
         if (!interaction.member.voice.channel) {
             return interaction.reply({
@@ -50,9 +50,13 @@ module.exports = {
 
         // remove start msg upon joining vc
         connection.on(VoiceConnectionStatus.Ready, async () => {
+            // message should exist before deleting
             if (startMessage) {
                 try {
-                    await startMessage.delete();
+                    const fetchedMessage = await interaction.fetchReply();
+                    if (fetchedMessage) {
+                        await startMessage.delete();
+                    }
                 } catch (err) {
                     console.error('Start message kon niet worden verwijderd:', err);
                 }
@@ -97,6 +101,22 @@ module.exports = {
 
                 await interaction.channel.send(`Zomaar laat je me alleen :(`);
                 console.log('Jan paparazzi left the building');
+
+                // reload play command (vanuit reload.js)
+                const command = interaction.client.commands.get('play');
+
+                if (command) {
+                    delete require.cache[require.resolve(`./${command.data.name}.js`)];
+
+                    try {
+                        const newCommand = require(`./${command.data.name}.js`);
+                        interaction.client.commands.set(newCommand.data.name, newCommand);
+                        console.log(`Command \`${newCommand.data.name}\` is gereload!`);
+                    } catch (error) {
+                        console.error(error);
+                        console.log(`Er ging iets mis met het reloaden van de \`${command.data.name}\` command:\n\`${error.message}\``);
+                    }
+                }
             }
         }, 1000);
     },
